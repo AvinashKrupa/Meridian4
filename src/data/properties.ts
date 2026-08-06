@@ -710,7 +710,8 @@ export interface LandProperty {
   images: string[];
 }
 
-export const landProperty: LandProperty = {
+export const landProperties: LandProperty[] = [
+{
   slug: 'premium-residential-plot-vemagal',
   title: 'Premium Residential Plot in Vemagal',
   propertyType: 'Residential Plot',
@@ -869,9 +870,103 @@ export const landProperty: LandProperty = {
     ],
   },
   images: [landImg1, landImg2, landImg3, landImg4, landImg5],
-};
+},
+{
+  slug: 'residential-semi-commercial-plot-vijayanagar',
+  title: 'Premium Residential / Semi Commercial Plot',
+  propertyType: 'Residential / Semi Commercial Plot',
+  tag: 'Premium',
+  badges: ['Plot for Sale', 'BBMP A Khata', 'Clear Title', 'North-West Facing'],
+  address: {
+    line1: 'Vijayanagar',
+    line2: 'Bengaluru',
+    city: 'Bengaluru',
+    state: 'Karnataka',
+    pincode: '560040',
+    country: 'India',
+  },
+  contactForPrice: 'Contact for Price',
+  contactPhone: '+91 89510 25158',
+  contactWhatsapp: '+91 89510 25158',
+  overview:
+    'Located in the well-established locality of Vijayanagar, this premium 3,375 sq.ft. residential and semi-commercial plot offers an excellent opportunity for home construction, commercial development, or long-term investment.\n\nThe property features a BBMP A Khata, clear title documents, North-West facing orientation, and is situated on a wide 40 ft road, ensuring excellent accessibility and future appreciation.\n\nIts strategic location provides easy access to schools, hospitals, metro connectivity, shopping centres, and major commercial hubs, making it an ideal investment for both end users and investors.',
+  landInfo: [
+    { label: 'Property Type', value: 'Residential / Semi Commercial Plot' },
+    { label: 'Property Status', value: 'Plot for Sale' },
+    { label: 'Khata', value: 'BBMP A Khata' },
+    { label: 'Ownership', value: 'Clear Title Documents' },
+    { label: 'Plot Area', value: '3375 Sq.ft' },
+    { label: 'Facing', value: 'North-West' },
+    { label: 'Road Width', value: '40 Feet' },
+    { label: 'Suitable For', value: 'Residential Construction, Commercial Building, Investment' },
+  ],
+  sites: [],
+  highlights: [
+    'BBMP A Khata',
+    'Clear Title',
+    'Residential Plot',
+    'Semi Commercial',
+    'North-West Facing',
+    '3375 Sq.ft Plot',
+    '40 Feet Wide Road',
+    'Prime Bengaluru Location',
+    'Excellent Investment Opportunity',
+    'Ready for Registration',
+  ],
+  location: {
+    latitude: 12.9719,
+    longitude: 77.5416,
+    mapQuery: 'Vijayanagar, Bengaluru, Karnataka',
+  },
+  nearbyPlaces: [
+    { name: 'Vijayanagar Metro Station', category: 'Metro', distance: '1 km', travelTime: '3 mins' },
+    { name: 'Orion Mall', category: 'Mall', distance: '4 km', travelTime: '10 mins' },
+    { name: 'Mantri Square Mall', category: 'Mall', distance: '5 km', travelTime: '12 mins' },
+    { name: 'Ramaiah Memorial Hospital', category: 'Hospital', distance: '5 km', travelTime: '12 mins' },
+    { name: 'Bangalore University', category: 'School', distance: '4 km', travelTime: '10 mins' },
+    { name: 'RV College of Engineering', category: 'School', distance: '6 km', travelTime: '15 mins' },
+    { name: 'Majestic Railway Station', category: 'Railway', distance: '6 km', travelTime: '15 mins' },
+    { name: 'Kempegowda International Airport', category: 'Airport', distance: '36 km', travelTime: '50 mins' },
+  ],
+  investmentHighlights: [
+    'Prime Bengaluru Location',
+    'Excellent Appreciation Potential',
+    'Suitable for Residential Construction',
+    'Suitable for Commercial Development',
+    'BBMP A Khata',
+    'Clear Title Documents',
+    '40 Feet Wide Road',
+    'High Future Growth Potential',
+  ],
+  contact: {
+    company: 'MERIDIAN4',
+    phone: '+91 89510 25158',
+    whatsapp: '+91 89510 25158',
+    email: 'sales@meridian4.com',
+    website: 'www.meridian4.com',
+  },
+  scheduleVisit: {
+    availableSlots: [
+      { day: 'Monday', time: '10:00 AM – 12:00 PM' },
+      { day: 'Tuesday', time: '2:00 PM – 4:00 PM' },
+      { day: 'Wednesday', time: '11:00 AM – 1:00 PM' },
+      { day: 'Thursday', time: '3:00 PM – 5:00 PM' },
+      { day: 'Friday', time: '4:00 PM – 6:00 PM' },
+      { day: 'Saturday', time: '10:00 AM – 12:00 PM' },
+    ],
+  },
+  images: [
+    '/images/properties/WhatsApp_Image_2026-08-06_at_3.15.58_PM.jpeg',
+    '/images/properties/WhatsApp_Image_2026-08-06_at_3.15.58_PM_(1).jpeg',
+    '/images/properties/WhatsApp_Image_2026-08-06_at_3.15.59_PM.jpeg',
+    '/images/properties/WhatsApp_Image_2026-08-06_at_3.16.01_PM.jpeg',
+    '/images/properties/WhatsApp_Image_2026-08-06_at_3.16.01_PM_(1).jpeg',
+  ],
+},
+];
 
 export function getLandPropertyBySlug(slug: string): LandProperty | undefined {
-  if (slug === landProperty.slug) return landProperty;
-  return undefined;
+  return landProperties.find((p) => p.slug === slug);
 }
+
+export const landProperty = landProperties[0];

@@ -78,7 +78,7 @@ function App() {
 
   // Render premium property detail page (slug-based)
   if (detailSlug) {
-    const isLand = detailSlug === 'premium-residential-plot-vemagal';
+    const isLand = detailSlug === 'premium-residential-plot-vemagal' || detailSlug === 'residential-semi-commercial-plot-vijayanagar';
     return (
       <div className="min-h-screen bg-white">
         <ScrollProgress />

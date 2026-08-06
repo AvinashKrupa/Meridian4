@@ -6,7 +6,7 @@ import {
   Trees, Car, Award, Building2, Mail, Send,
   Facebook, Twitter, Linkedin, Link2,
 } from 'lucide-react';
-import { landProperty, type NearbyPlace } from '@/data/properties';
+import { landProperties, getLandPropertyBySlug, type NearbyPlace, type LandProperty } from '@/data/properties';
 
 interface LandPropertyDetailPageProps {
   slug: string;
@@ -15,7 +15,7 @@ interface LandPropertyDetailPageProps {
 }
 
 export default function LandPropertyDetailPage({ slug, onBack, onBookVisit }: LandPropertyDetailPageProps) {
-  const property = landProperty.slug === slug ? landProperty : undefined;
+  const property = getLandPropertyBySlug(slug);
   const [galleryIdx, setGalleryIdx] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
@@ -206,30 +206,40 @@ export default function LandPropertyDetailPage({ slug, onBack, onBookVisit }: La
 
           {/* 2. Land Information */}
           <LuxuryCard id="land-info" title="Land Information" icon={Maximize}>
-            {/* Site selector tabs */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {property.sites.map((site, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveSite(i)}
-                  className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${activeSite === i ? 'bg-navy text-white shadow-luxury' : 'bg-ivory text-navy hover:bg-gold/10 hover:text-gold-dark'}`}
-                >
-                  {site.name}
-                </button>
-              ))}
-            </div>
+            {property.sites.length > 0 ? (
+              <>
+                {/* Site selector tabs */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {property.sites.map((site, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveSite(i)}
+                      className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${activeSite === i ? 'bg-navy text-white shadow-luxury' : 'bg-ivory text-navy hover:bg-gold/10 hover:text-gold-dark'}`}
+                    >
+                      {site.name}
+                    </button>
+                  ))}
+                </div>
 
-            {/* Active site description */}
-            <div className="mb-5 p-5 rounded-2xl bg-ivory border border-gold/10">
-              <p className="text-sm text-gray-700 leading-relaxed">{property.sites[activeSite].description}</p>
-            </div>
+                {/* Active site description */}
+                <div className="mb-5 p-5 rounded-2xl bg-ivory border border-gold/10">
+                  <p className="text-sm text-gray-700 leading-relaxed">{property.sites[activeSite].description}</p>
+                </div>
 
-            {/* Active site land info */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {property.sites[activeSite].landInfo.map((detail) => (
-                <DetailRow key={detail.label} label={detail.label} value={detail.value} />
-              ))}
-            </div>
+                {/* Active site land info */}
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {property.sites[activeSite].landInfo.map((detail) => (
+                    <DetailRow key={detail.label} label={detail.label} value={detail.value} />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {property.landInfo.map((detail) => (
+                  <DetailRow key={detail.label} label={detail.label} value={detail.value} />
+                ))}
+              </div>
+            )}
           </LuxuryCard>
 
           {/* 3. Property Highlights */}
@@ -519,7 +529,7 @@ function ShareModal({
   shareUrl,
   shareText,
 }: {
-  property: typeof landProperty;
+  property: LandProperty;
   copied: boolean;
   onCopy: () => void;
   onNativeShare: () => void;
