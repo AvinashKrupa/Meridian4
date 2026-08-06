@@ -878,8 +878,8 @@ export const landProperties: LandProperty[] = [
   tag: 'Premium',
   badges: ['Plot for Sale', 'BBMP A Khata', 'Clear Title', 'North-West Facing'],
   address: {
-    line1: 'Vijayanagar',
-    line2: 'Bengaluru',
+    line1: 'Bhoja Complex, 89, 2nd Main Rd',
+    line2: 'MRCR Layout, MC Layout, Vijayanagar',
     city: 'Bengaluru',
     state: 'Karnataka',
     pincode: '560040',
@@ -916,7 +916,7 @@ export const landProperties: LandProperty[] = [
   location: {
     latitude: 12.9719,
     longitude: 77.5416,
-    mapQuery: 'Vijayanagar, Bengaluru, Karnataka',
+    mapQuery: 'Bhoja Complex, 89, 2nd Main Rd, MRCR Layout, MC Layout, Vijayanagar, Bengaluru, Karnataka 560040',
   },
   nearbyPlaces: [
     { name: 'Vijayanagar Metro Station', category: 'Metro', distance: '1 km', travelTime: '3 mins' },
